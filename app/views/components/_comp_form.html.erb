@@ -1,0 +1,29 @@
+<%= form_with(model: @component, local: true) do |form| %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :data %>
+    <%= form.text_area :data %>
+  </div>
+
+  <div class="field">
+    <%= form.label :view %>
+    <%= form.text_area :view %>
+  </div>
+
+  <% fields_for :component, @page.components do |builder| %>
+    <div class="field">
+      <%= builder.label :name %>
+      <%= builder.text_field :name %>
+    </div>
+  <% end %>
+
+  <%= form.hidden_field :page_id => @page.id %>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

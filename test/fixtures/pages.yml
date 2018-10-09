@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  layout: MyString
+  has_header: false
+  has_footer: false
+  is_printable: false
+  is_full_width: false
+
+two:
+  title: MyString
+  layout: MyString
+  has_header: false
+  has_footer: false
+  is_printable: false
+  is_full_width: false

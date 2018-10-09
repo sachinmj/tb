@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+<h1 class="subtitle is-1"><%= @page.title %></h1>
+<p>
+  <strong>Title:</strong>
+  <%= @page.title %>
+</p>
+
+<p>
+  <strong>Layout:</strong>
+  <%= @page.layout %>
+</p>
+
+<p>
+  <strong>Has header:</strong>
+  <%= @page.has_header %>
+</p>
+
+<p>
+  <strong>Has footer:</strong>
+  <%= @page.has_footer %>
+</p>
+
+<p>
+  <strong>Is printable:</strong>
+  <%= @page.is_printable %>
+</p>
+
+<p>
+  <strong>Is full width:</strong>
+  <%= @page.is_full_width %>
+</p>
+
+
+<%= link_to 'Edit', edit_page_path(@page) %> |
+<%= link_to 'Back', pages_path %>
+
+<hr>
+<ol>
+  <% for component in @page.components %>
+    <li><%= component.name %></li>
+  <% end %>
+</ol>
+<hr>
+
+
+
+<%= render 'add_component_form', locals: {page: @page}  %>
