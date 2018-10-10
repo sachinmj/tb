@@ -9,7 +9,12 @@ class WebController < ApplicationController
   end
 
   def select_tags
-    @params = params[:id]
+    # @params = params[:id]
+    @tags = Tag.all
+    @business = Business.find(params[:id])
+
+    @selected_tags = Tag.new
+    # @selected_tags = @business.@selected_tags
   end
 
   def select_benchmarks
