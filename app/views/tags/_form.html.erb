@@ -1,11 +1,11 @@
 <%= form_for (@tag) do |form| %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, :class=> "form-control" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-group">
+    <%= form.submit 'Add Tag', :class => "btn btn-primary"  %>
   </div>
 <% end %>
