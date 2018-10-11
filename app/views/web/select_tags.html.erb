@@ -1,2 +1,13 @@
-<h1>Web#select_tags</h1>
-<p><%= @params %></p>
+<h1><%= @business.name %></h1>
+<!-- <p><%= @params %></p> -->
+<p><%= @business.name %></p>
+
+<ul class="nav nav-pills nav-fill">
+<% @tags.each do |tag| %>
+  <li class="nav-item">
+    <%= link_to tag.name, tag, :class => "nav-link", :id=> tag.id %>
+  </li>
+<% end %>
+</ul>
+
+<!-- <%= render 'form', business: @business %> -->
