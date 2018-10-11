@@ -1,0 +1,7 @@
+<ul class="nav nav-pills nav-fill">
+  <% @tags.each do |tag| %>
+    <li class="nav-item">
+      <%= link_to tag.name, tag, :class => "nav-link", :id=> tag.id %>
+    </li>
+  <% end %>
+</ul>

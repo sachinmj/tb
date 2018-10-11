@@ -6,6 +6,7 @@ class WebController < ApplicationController
 
   def add_business
     @business = Business.new
+    @tags = Tag.all
   end
 
   def select_tags
