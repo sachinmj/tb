@@ -16,8 +16,9 @@
 //= require popper
 //= require bootstrap
 //= require turbolinks
-//= require libraries/underscore-min
-//= require libraries/backbone-min
+//= require libraries/knockout342
+// require libraries/backbone-min
 //= require app/router
+//= require app/register-business
 
 // require_tree .
