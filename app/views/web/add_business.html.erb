@@ -2,3 +2,34 @@
 <!-- <p>Find me in app/views/web/add_business.html.erb</p> -->
 
 <%= render 'form', business: @business %>
+
+
+<!-- Modal -->
+<div class="modal fade" id="category_list_modal" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="category_list_modalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="category_list_modalLabel">Select Business Categories</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <% # render 'taglist', tags: @tags %>
+
+        <ul data-bind="foreach: AllTags" class="nav nav-pills nav-fill tag-selector">
+          <li class="nav-item" >
+            <a href="#" class="nav-link" data-bind="text:name,
+                                                    css: { active : isSelected},
+                                                    event: {click: selectTag}"></a>
+          </li>
+        </ul>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
