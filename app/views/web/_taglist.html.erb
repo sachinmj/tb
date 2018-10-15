@@ -1,7 +1,8 @@
-<ul class="nav nav-pills nav-fill">
+<ul class="nav nav-pills nav-fill" role="tablist">
   <% @tags.each do |tag| %>
-    <li class="nav-item">
-      <%= link_to tag.name, tag, :class => "nav-link", :id=> tag.id %>
+    <li class="nav-item" >
+      <%= link_to tag.name, "#", :class => "nav-link", :id=> tag.id %>
+      <!-- <%= link_to tag.name, tag, :class => "nav-link", :id=> tag.id %> -->
     </li>
   <% end %>
 </ul>
