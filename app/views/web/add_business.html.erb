@@ -9,7 +9,7 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="category_list_modalLabel">Select Business Categories</h5>
+        <h5 class="modal-title" id="category_list_modalLabel">Select Business Categories (<span data-bind="text: self.AllTags().length"></span>)</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -17,11 +17,29 @@
       <div class="modal-body">
         <% # render 'taglist', tags: @tags %>
 
+        <div class="alert alert-primary" role="alert" data-bind="visible: hasSelectedTags">
+          <div class="float-right">
+            Clear Selection
+          </div>
+          You have selected <span data-bind="text: SelectedTags().length"></span> Tags
+        </div>
+
+        <div class="alert alert-primary" role="alert" data-bind="visible: !hasSelectedTags()">
+          Please select 5 tags that best describe your business.
+        </div>
+
+        <!-- <span data-bind="text: SelectedTags().length"></span>
+        <ul data-bind="foreach: SelectedTags" class="nav nav-pills nav-fill tag-selector">
+          <li class="nav-item" >
+            <a href="#" class="nav-link" data-bind="text:name"></a>
+          </li>
+        </ul> -->
+
         <ul data-bind="foreach: AllTags" class="nav nav-pills nav-fill tag-selector">
           <li class="nav-item" >
             <a href="#" class="nav-link" data-bind="text:name,
-                                                    css: { active : isSelected},
-                                                    event: {click: selectTag}"></a>
+                                                    css: { active : isSelected, disabled: $parent.allTagsSelected() },
+                                                    event: {click: $parent.selectTag}"></a>
           </li>
         </ul>
 

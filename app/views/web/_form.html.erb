@@ -26,6 +26,19 @@
     </div>
   </div>
 
+  <div class="card">
+      <div class="card-body">
+        <a href="#" data-toggle="modal" data-target="#category_list_modal" data-bind="visible: !hasSelectedTags()">
+          Select Categories: <span class="badge badge-primary" data-bind="text: SelectedTags().length"></span>
+        </a>
+        <div data-bind="foreach: SelectedTags">
+          <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#category_list_modal" data-bind="text:name">Primary</button>
+        </div>
+       <!-- <span class="badge badge-primary" data-bind="text:name" data-toggle="modal" data-target="#category_list_modal"></span> -->
+     </div>
+  </div>
+
+
   <div class="form-group">
     <%= form.label :category %>
     <div class="input-group">
