@@ -16,6 +16,7 @@
 //= require popper
 //= require bootstrap
 //= require turbolinks
+// require libraries/lodash.min
 //= require libraries/underscore-min
 //= require libraries/knockout342
 //= require app/router

@@ -4,7 +4,25 @@
   padding-top: 20px;
 }
 
+.top-40 {
+  padding-top: 40px;
+}
+
 .tag-selector li {
   margin: 5px;
-  
+}
+
+.selected-tags {
+  .btn {
+    margin-bottom: 5px;
+  }
+}
+
+.tag-modal-h {
+  height: 550px;
+  overflow-y: auto;
+}
+
+.watermark {
+  // background-color: #
 }

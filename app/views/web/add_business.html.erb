@@ -1,7 +1,14 @@
-<h1>Add Business Listing</h1>
-<!-- <p>Find me in app/views/web/add_business.html.erb</p> -->
+<div class="row">
+    <div class="col-sm-8">
+      <h1>Register your Business</h1>
+      <!-- <p>Find me in app/views/web/add_business.html.erb</p> -->
 
-<%= render 'form', business: @business %>
+      <%= render 'form', business: @business %>
+    </div>
+    <div class="col-sm">
+      One of three columns
+    </div>
+</div>
 
 
 <!-- Modal -->
@@ -14,12 +21,25 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body tag-modal-h">
         <% # render 'taglist', tags: @tags %>
+
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" data-bind="value: searchTerm, valueUpdate: 'afterkeydown'" placeholder="Search" aria-label="Search" aria-describedby="Search">
+          <div class="input-group-append">
+            <span class="input-group-text" id="basic-addon2">
+              <i class="fa fa-search" data-bind="visible: searchTerm().length == 0"></i>
+              <!-- <i class="fas fa-times"></i> -->
+              <i class="fas fa-times" data-bind="visible: searchTerm().length > 0 , event: {click: clearSearch} "></i>
+            </span>
+          </div>
+        </div>
 
         <div class="alert alert-primary" role="alert" data-bind="visible: hasSelectedTags">
           <div class="float-right">
-            Clear Selection
+            <a href="#" class="badge badge-danger" data-bind="css: {'d-none': undoEnabled()}, event: {click: clearSelectedTags }">Clear Selection</a>
+            <a href="#" class="badge badge-danger" data-bind="css: {'d-none': !undoEnabled()}, event: {click: UndoClearTags }">Undo Clear</a>
+            <!-- <span class="btn">Clear Selection</span> -->
           </div>
           You have selected <span data-bind="text: SelectedTags().length"></span> Tags
         </div>
@@ -28,25 +48,24 @@
           Please select 5 tags that best describe your business.
         </div>
 
-        <!-- <span data-bind="text: SelectedTags().length"></span>
-        <ul data-bind="foreach: SelectedTags" class="nav nav-pills nav-fill tag-selector">
-          <li class="nav-item" >
-            <a href="#" class="nav-link" data-bind="text:name"></a>
-          </li>
-        </ul> -->
 
-        <ul data-bind="foreach: AllTags" class="nav nav-pills nav-fill tag-selector">
+        <ul data-bind="foreach: AllTags" class="nav nav-pills tag-selector">
           <li class="nav-item" >
-            <a href="#" class="nav-link" data-bind="text:name,
-                                                    css: { active : isSelected, disabled: $parent.allTagsSelected() },
-                                                    event: {click: $parent.selectTag}"></a>
+            <a href="#" class="nav-link"
+              data-bind="text:name,
+                          css: { active : isSelected,
+                                disabled: $parent.allTagsSelected(),
+                                'd-none': !isFiltered(),
+                                'border': aboutToClear
+                                },
+                          event: {click: $parent.selectTag}"></a>
           </li>
         </ul>
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
       </div>
     </div>
   </div>
