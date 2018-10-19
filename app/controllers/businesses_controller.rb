@@ -1,4 +1,6 @@
 class BusinessesController < ApplicationController
+  skip_before_action :verify_authenticity_token
+  # caches_page :index, :show
   before_action :set_business, only: [:show, :edit, :update, :destroy]
 
   # GET /businesses
@@ -28,8 +30,8 @@ class BusinessesController < ApplicationController
 
     respond_to do |format|
       if @business.save
-        # format.html { redirect_to @business, notice: 'Business was successfully created.' }
-        format.html { redirect_to :controller=> 'web', :action=>'select_tags', :id=>  @business, notice: 'Business was successfully created.' }
+        format.html { redirect_to @business, notice: 'Business was successfully created.' }
+        # format.html { redirect_to :controller=> 'web', :action=>'select_tags', :id=>  @business, notice: 'Business was successfully created.' }
         # session[:business] << @business
         # format.html { redirect_to redirect_to :controller => 'welcome', :action => 'add_category', :id => @business, notice: 'Business was successfully created.' }
         format.json { render :show, status: :created, location: @business }
