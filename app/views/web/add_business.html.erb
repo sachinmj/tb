@@ -3,7 +3,8 @@
       <h1>Register your Business</h1>
       <!-- <p>Find me in app/views/web/add_business.html.erb</p> -->
 
-      <%= render 'form', business: @business %>
+      <%= render 'ko_form', business: @business %>
+      <!-- <% render 'form', business: @business %> -->
     </div>
     <div class="col-sm">
       One of three columns
@@ -51,9 +52,6 @@
       </div>
       <div class="modal-body tag-modal-h">
         <% # render 'taglist', tags: @tags %>
-
-
-
 
         <ul data-bind="foreach: AllTags" class="nav nav-pills tag-selector">
           <li class="nav-item" >

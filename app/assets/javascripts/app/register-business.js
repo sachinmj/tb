@@ -1,5 +1,16 @@
 // console.log(ko);
 
+// function Business(params) {
+//   var self = this;
+//   // self.id = ko.observable(params.id);
+//   self.business_name = ko.observable(params.business_name);
+//   self.entry_url = ko.observable(params.entry_url);
+//   self.description = ko.observable(params.description);
+//   self.tags = ko.observableArray([]);
+//   self.twitter_id = ko.observable(params.twitter_id);
+//   self.facebook_url = ko.observable(params.facebook_url);
+// };
+
 function Tag(tag) {
   var self = this;
   self.id = ko.observable(tag.id);
@@ -9,15 +20,55 @@ function Tag(tag) {
   self.aboutToClear = ko.observable(false);
 };
 
+function functionName() {
+
+}
+
 function BusinessViewModel() {
   self = this;
+
+  // Business Fields
+  self.business_name = ko.observable();
+  self.entry_url = ko.observable();
+  self.description = ko.observable();
+  self.caategory = ko.observableArray([]);
+  self.twitter_id = ko.observable();
+  self.facebook_url = ko.observable();
+
+  self.enableSubmit = ko.observable(false)
+
+
+  self.nb = ko.observableArray([]);
+
+  // Tags
   self.AllTags = ko.observableArray([]);
   self.SelectedTags = ko.observableArray([]);
   self.searchTerm = ko.observable("");
   self.maxSelect = ko.observable(5);
   self.undoEnabled = ko.observable(false)
 
+  self.newBusiness = ko.observableArray([]);
 
+  self.formData = ko.observableArray([]);
+
+  // added an address to the "self.addresses" array
+  // self.addresses.push(new NewAddress({isSaved: true, isOpen: false, address1: "Address line 1", address2: "Address line 2", city: "Tampa", state: "Florida", zip: "352352", country: "USA", phone: "234-235-2352"}));
+
+
+  self.nb.push([{
+    business_name : self.business_name,
+    entry_url     : self.entry_url,
+    description   : self.description,
+    category          : self.SelectedTags,
+    twitter_id    : self.twitter_id,
+    facebook_url  : self.facebook_url
+  }]);
+
+  self.formData.push(self.nb)
+
+  // self.frjson = ko.toJSON(self.newBusiness);
+
+  // Triggred when user click on the tag
   self.selectTag = function(tag){
     tag.isSelected(!tag.isSelected());
     // tag.aboutToClear(!tag.aboutToClear());
@@ -73,7 +124,12 @@ function BusinessViewModel() {
   });
 
   // console.log(self.AllTags);
-  console.log(self.SelectedTags());
+  // console.log(self.SelectedTags());
+
+  self.submitForm = function () {
+    console.log(ko.toJSON(self.nb()));
+  };
+
 
   // Load initial Tags from Server
   $.getJSON('/tags.json', function (allTags) {

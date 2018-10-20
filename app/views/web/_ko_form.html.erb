@@ -1,0 +1,81 @@
+<form action="/businesses" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓">
+
+  <div class="form-group">
+    <label for="business_name">Name : <span data-bind="text: business_name"></span> </label>
+    <input class="form-control" type="text" name="business[name]" id="business_name" data-bind="textInput: business_name" autocomplete="off">
+  </div>
+
+  <div class="form-group">
+    <label for="business_entry_url">Entry url</label>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon3">https://</span>
+      </div>
+      <input class="form-control" type="text" name="business[entry_url]" id="business_entry_url" data-bind="textInput: entry_url">
+    </div>
+  </div>
+
+  <div class="card selected-tags">
+      <div class="card-header">
+        <span class="badge badge-primary float-right" data-bind="text: SelectedTags().length">9</span>
+        <a href="#" data-toggle="modal" data-target="#category_list_modal" data-bind="text: hasSelectedTags() == true ? 'Edit' : 'Select Categories' ">Edit</a>
+      </div>
+      <div class="card-body" data-bind="visible: hasSelectedTags" style="">
+        <div data-bind="foreach: SelectedTags">
+          <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#category_list_modal" data-bind="text:name"></button>
+        </div>
+       <!-- <span class="badge badge-primary" data-bind="text:name" data-toggle="modal" data-target="#category_list_modal"></span> -->
+     </div>
+  </div>
+
+
+  <div class="form-group">
+    <label for="business_category">Category</label>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon3" data-toggle="modal" data-target="#category_list_modal">+</span>
+      </div>
+      <input class="form-control" type="text" name="business[category]" id="business_category">
+    </div>
+  </div>
+
+  <pre data-bind="text: ko.toJSON(nb)" style="white-space: pre-wrap;"></pre>
+
+  <!-- <div class="form-group">
+    <label for="business_category">Category</label>
+    <input class="form-control" type="text" name="business[category]" id="business_category" />
+  </div> -->
+
+  <div class="form-group">
+    <label for="business_description">Description</label>
+    <textarea class="form-control" name="business[description]" id="business_description" data-bind="textInput: description"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="business_twitter_id">Twitter</label>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon3">twitter.com/</span>
+      </div>
+      <input class="form-control" type="text" name="business[twitter_id]" id="business_twitter_id" data-bind="textInput: twitter_id">
+    </div>
+    <!-- <input class="form-control" type="text" name="business[twitter_id]" id="business_twitter_id" /> -->
+  </div>
+
+  <div class="form-group">
+    <label for="business_facebook_url">Facebook url</label>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon3">facebook.com/</span>
+      </div>
+      <input class="form-control" type="text" name="business[facebook_url]" id="business_facebook_url" data-bind="textInput: facebook_url">
+    </div>
+    <!-- <input class="form-control" type="text" name="business[facebook_url]" id="business_facebook_url" /> -->
+  </div>
+
+  <div class="actions">
+    <!-- <input type="submit" name="commit" value="Add Details" class="btn btn-primary" data-disable-with="Add Details"> -->
+    <button type="button" name="button" data-bind="event: {click: submitForm}">Submit</button>
+    <input type="submit" name="commit" value="Add Details" class="btn btn-primary" data-disable-with="Add Details">
+  </div>
+</form>
